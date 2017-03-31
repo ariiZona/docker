@@ -38,7 +38,7 @@ RUN echo deb http://ppa.launchpad.net/zfs-native/stable/ubuntu trusty main > /et
 RUN apt-get update && apt-get install -y wget
 # Add llvm repo
 RUN wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add -
-RUN echo deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty3.8 main > /etc/apt/sources.list.d/llvm.list
+RUN echo deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.8 main > /etc/apt/sources.list.d/llvm.list
 
 # Packaged dependencies
 RUN apt-get update && apt-get install -y \
