@@ -34,6 +34,8 @@ COPY keys/launchpad-ppa-zfs.asc /go/src/github.com/docker/docker/keys/
 RUN apt-key add /go/src/github.com/docker/docker/keys/launchpad-ppa-zfs.asc
 RUN echo deb http://ppa.launchpad.net/zfs-native/stable/ubuntu trusty main > /etc/apt/sources.list.d/zfs.list
 
+# Add wget
+RUN apt-get update && apt-get install -y wget
 # Add llvm repo
 RUN wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add -
 RUN echo deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty3.8 main > /etc/apt/sources.list.d/llvm.list
