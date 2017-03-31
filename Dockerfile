@@ -23,7 +23,7 @@
 # the case. Therefore, you don't have to disable it anymore.
 #
 
-FROM ioft/i386-ubuntu:trusty
+FROM ioft/i386-ubuntu:xenial
 
 # allow replacing httpredir or deb mirror
 ARG APT_MIRROR=deb.debian.org
@@ -33,12 +33,6 @@ RUN sed -ri "s/(httpredir|deb).debian.org/$APT_MIRROR/g" /etc/apt/sources.list
 COPY keys/launchpad-ppa-zfs.asc /go/src/github.com/docker/docker/keys/
 RUN apt-key add /go/src/github.com/docker/docker/keys/launchpad-ppa-zfs.asc
 RUN echo deb http://ppa.launchpad.net/zfs-native/stable/ubuntu trusty main > /etc/apt/sources.list.d/zfs.list
-
-# Add wget
-RUN apt-get update && apt-get install -y wget
-# Add llvm repo
-RUN wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add -
-RUN echo deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.8 main > /etc/apt/sources.list.d/llvm.list
 
 # Packaged dependencies
 RUN apt-get update && apt-get install -y \
@@ -51,7 +45,7 @@ RUN apt-get update && apt-get install -y \
 	bsdmainutils \
 	btrfs-tools \
 	build-essential \
-	clang-3.8 \
+	clang \
 	cmake \
 	createrepo \
 	curl \
