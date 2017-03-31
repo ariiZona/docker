@@ -23,7 +23,7 @@
 # the case. Therefore, you don't have to disable it anymore.
 #
 
-FROM debian:jessie
+FROM ioft/i386-ubuntu:trusty
 
 # allow replacing httpredir or deb mirror
 ARG APT_MIRROR=deb.debian.org
@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y \
 	bsdmainutils \
 	btrfs-tools \
 	build-essential \
-	clang \
+	clang-3.6 \
 	cmake \
 	createrepo \
 	curl \
@@ -128,7 +128,7 @@ RUN set -x \
 #            will need updating, to avoid errors. Ping #docker-maintainers on IRC
 #            with a heads-up.
 ENV GO_VERSION 1.7.5
-RUN curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz" \
+RUN curl -fsSL "https://golang.org/dl/go${GO_VERSION}.linux-386.tar.gz" \
 	| tar -xzC /usr/local
 
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
