@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y \
 	bsdmainutils \
 	btrfs-tools \
 	build-essential \
-	clang-3.6 \
+	clang \
 	cmake \
 	createrepo \
 	curl \
